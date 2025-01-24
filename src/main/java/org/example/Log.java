@@ -4,7 +4,6 @@ import java.io.IOException;  // Import the IOException class to handle errors
 import java.io.FileWriter;   // Import the FileWriter class
 
 public class Log {
-
     private String m_fileName;
     private static Log m_instance = null;
     private FileWriter m_fileWriter = null;
@@ -20,7 +19,6 @@ public class Log {
         {
             m_instance = new Log();
         }
-
 
         return m_instance;
     }
@@ -78,7 +76,4 @@ public class Log {
         flush();
         m_fileWriter.close();
     }
-
-
-
 }
