@@ -1,6 +1,8 @@
 package org.example;
 import java.io.IOException;
 
+import org.example.Log.Log;
+
 public class Main {
     public static void main(String[] args) throws IOException {
 

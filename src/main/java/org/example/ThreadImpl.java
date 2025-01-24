@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Log.Log;
+
 public class ThreadImpl extends Thread{
     // Method to start Thread
     private Log m_logInstance = null;
