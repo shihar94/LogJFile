@@ -2,11 +2,13 @@ package org.example;
 import java.io.File;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
 import java.io.FileWriter;   // Import the FileWriter class
+import java.util.concurrent.Semaphore;
 
 public class Log {
     private String m_fileName;
     private static Log m_instance = null;
     private FileWriter m_fileWriter = null;
+    private Object mutex = new Object();
 
     private Log()
     {
@@ -57,14 +59,20 @@ public class Log {
 
     public void writeLog(String content)
     {
-        try {
-            m_fileWriter.write(content);
 
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+        synchronized (mutex)
+        {
+            try
+            {
+                m_fileWriter.write(content);
+            } catch (IOException e) {
+                //throw new RuntimeException(e);
+                e.printStackTrace();
+            }
         }
+
+
+
 
     }
 
